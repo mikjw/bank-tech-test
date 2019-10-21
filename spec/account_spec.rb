@@ -24,6 +24,7 @@ describe Account do
     expect(account.balance).to eq(75)
   end
 
-
+  it "prints an empty statement" do
+    expect(account.print_statement).to eq("date || credit || debit || balance")
+  end
 end
-

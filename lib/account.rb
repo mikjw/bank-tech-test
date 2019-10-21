@@ -1,5 +1,4 @@
 class Account
-
   attr_reader :balance
   
   def initialize
@@ -8,9 +7,13 @@ class Account
 
   def make_deposit(amount)
     @balance += amount
-  end 
+  end
 
   def make_withdrawal(amount)
     @balance -= amount
-  end 
+  end
+
+  def print_statement
+    "date || credit || debit || balance"
+  end
 end
