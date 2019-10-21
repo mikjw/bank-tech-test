@@ -15,4 +15,9 @@ class Account
   def make_withdrawal(amount)
     @balance -= amount
   end
+
+  def display_statement
+    @log.print_statement
+  end
+
 end

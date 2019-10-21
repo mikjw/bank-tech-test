@@ -37,5 +37,12 @@ describe Account do
       account_2 = Account.new
       expect(account_2.log).not_to be(nil)
     end
+
+    it 'displays statement using log' do
+      spy_log = spy('spy_log')
+      account_3 = Account.new(spy_log)
+      account_3.display_statement
+      expect(spy_log).to have_received(:print_statement)
+    end
   end
 end
