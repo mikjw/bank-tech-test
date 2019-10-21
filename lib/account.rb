@@ -3,12 +3,12 @@ class Account
   
   def initialize
     @balance = 0
-    @balances = []
+    @transactions = []
   end
 
   def make_deposit(amount)
     @balance += amount
-    @balances << @balance
+    @transactions << {:balance => @balance}
   end
 
   def make_withdrawal(amount)
@@ -17,8 +17,8 @@ class Account
 
   def print_statement
     puts "balance"
-    @balances.reverse.each do |balance|
-      puts format_balance(balance)
+    @transactions.reverse.each do |transaction|
+      puts format_balance(transaction[:balance])
     end
   end
 
