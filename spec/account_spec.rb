@@ -53,5 +53,13 @@ describe Account do
       account_3.make_deposit(275)
       expect(spy_log).to have_received(:store_transaction).with(275)
     end
+
+    it 'passes withdrawals to log' do
+      spy_log = spy('spy_log')
+      account_3 = Account.new(spy_log)
+      account_3.make_deposit(275)
+      account_3.make_withdrawal(195)
+      expect(spy_log).to have_received(:store_transaction).with(80)
+    end
   end 
 end

@@ -15,6 +15,7 @@ class Account
 
   def make_withdrawal(amount)
     @balance -= amount
+    @log.store_transaction(@balance)
   end
 
   def display_statement
