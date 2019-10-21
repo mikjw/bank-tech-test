@@ -49,6 +49,8 @@
       ],
       "/Users/michael/Projects/bank-tech-test/lib/account.rb": [
         1,
+        null,
+        1,
         1,
         null,
         1,
@@ -78,8 +80,29 @@
         3,
         null,
         null
+      ],
+      "/Users/michael/Projects/bank-tech-test/lib/log.rb": [
+        1,
+        null,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/michael/Projects/bank-tech-test/spec/log_spec.rb": [
+        1,
+        null,
+        1,
+        2,
+        null,
+        1,
+        1,
+        null,
+        null
       ]
     },
-    "timestamp": 1571669728
+    "timestamp": 1571670067
   }
 }

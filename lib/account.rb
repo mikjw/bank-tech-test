@@ -1,3 +1,5 @@
+require 'log.rb'
+
 class Account
   attr_reader :balance
   
