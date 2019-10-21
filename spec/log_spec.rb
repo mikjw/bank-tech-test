@@ -2,6 +2,7 @@ require 'log.rb'
 
 describe Log do
   subject(:log) { described_class.new }
+  let (:test_date) { double :test_date }
 
   describe '#initialization' do
     it "initializes with empty array of transactions" do
@@ -9,7 +10,7 @@ describe Log do
     end
   end 
 
-  describe 'storing transactions' do
+  describe 'storing balances' do
     it "stores 275 when given 275" do
       log.store_transaction(275)
       expect(log.transactions).to eq([{:balance => "275.00"}])
@@ -19,6 +20,13 @@ describe Log do
       log.store_transaction(300)
       expect(log.transactions).to eq([{:balance => "300.00"}])
     end
+  end
+
+  describe 'storing dates' do
+    it 'adds the date to a transaction' do
+      log.store_transaction(300)
+      expect(log.transactions).to eq([{:date => test_date, :balance => "300.00"}])
+    end 
   end 
 
   describe 'printing statements' do 

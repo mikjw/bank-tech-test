@@ -5,6 +5,8 @@ describe Account do
 
   let (:test_log) { Log.new }
   let (:account_2) { Account.new }
+  let (:spy_log) { spy('spy_log') }
+  let (:account_3) { Account.new(spy_log) }
 
   describe 'initialization' do
     it "initializes with a balance of 0" do
@@ -41,22 +43,16 @@ describe Account do
 
   describe 'interaction with log' do
     it 'calls log to display statement' do
-      spy_log = spy('spy_log')
-      account_3 = Account.new(spy_log)
       account_3.display_statement
       expect(spy_log).to have_received(:print_statement)
     end
 
     it 'passes deposits to log' do
-      spy_log = spy('spy_log')
-      account_3 = Account.new(spy_log)
       account_3.make_deposit(275)
       expect(spy_log).to have_received(:store_transaction).with(275)
     end
 
     it 'passes withdrawals to log' do
-      spy_log = spy('spy_log')
-      account_3 = Account.new(spy_log)
       account_3.make_deposit(275)
       account_3.make_withdrawal(195)
       expect(spy_log).to have_received(:store_transaction).with(80)
