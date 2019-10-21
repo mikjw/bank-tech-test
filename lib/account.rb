@@ -14,6 +14,6 @@ class Account
   end
 
   def print_statement
-    "date || credit || debit || balance"
+    puts "balance"
   end
 end
