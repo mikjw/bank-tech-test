@@ -16,4 +16,9 @@ describe Log do
     log.store_transaction(300)
     expect(log.transactions).to eq([{:balance => "300.00"}])
   end
+
+  it "prints an empty statement with balance" do
+    output_string = "balance\n"
+    expect{ log.print_statement }.to output(output_string).to_stdout
+  end
 end

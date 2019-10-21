@@ -9,6 +9,10 @@ class Log
     @transactions << {:balance => format_balance(balance)}
   end 
 
+  def print_statement
+    puts "balance"
+  end
+
   private 
 
   def format_balance(balance)
