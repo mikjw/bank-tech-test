@@ -3,6 +3,7 @@ require 'log.rb'
 describe Log do
   subject(:log) { described_class.new }
   let (:test_date) { double :test_date }
+  
   before do 
     allow(Date).to receive(:new).and_return test_date
   end 

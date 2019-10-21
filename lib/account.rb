@@ -1,4 +1,4 @@
-require 'log.rb'
+require_relative 'log.rb'
 
 class Account
   attr_reader :balance, :log
