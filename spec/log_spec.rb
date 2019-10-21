@@ -16,20 +16,20 @@ describe Log do
 
   describe 'storing balances' do
     it "stores 275 when given 275" do
-      log.store_transaction(275)
-      expect(log.transactions).to eq([{:date => test_date, :balance => "275.00"}])
+      log.store_transaction(:credit, 275)
+      expect(log.transactions).to eq([{:date => test_date, :type => :credit, :balance => "275.00"}])
     end
 
     it "stores 300 when given 300" do
-      log.store_transaction(300)
-      expect(log.transactions).to eq([{:date => test_date, :balance => "300.00"}])
+      log.store_transaction(:credit, 300)
+      expect(log.transactions).to eq([{:date => test_date, :type => :credit, :balance => "300.00"}])
     end
   end
 
   describe 'storing dates' do
     it 'adds the date to a transaction' do
-      log.store_transaction(300)
-      expect(log.transactions).to eq([{:date => test_date, :balance => "300.00"}])
+      log.store_transaction(:credit, 300)
+      expect(log.transactions).to eq([{:date => test_date, :type => :credit, :balance => "300.00"}])
     end 
   end 
 
@@ -40,21 +40,14 @@ describe Log do
     end
 
     it "prints balance statement after one deposit" do
-      log.store_transaction(275)
+      log.store_transaction(:credit, 275)
       output_string = "balance\n275.00\n"
       expect{ log.print_statement }.to output(output_string).to_stdout
     end
 
     it "prints balance statement after two deposits" do
-      log.store_transaction(275)
-      log.store_transaction(300)
-      output_string = "balance\n300.00\n275.00\n"
-      expect{ log.print_statement }.to output(output_string).to_stdout
-    end
-
-    it "prints balance statement after two deposits" do
-      log.store_transaction(275)
-      log.store_transaction(300)
+      log.store_transaction(:credit, 275)
+      log.store_transaction(:credit, 300)
       output_string = "balance\n300.00\n275.00\n"
       expect{ log.print_statement }.to output(output_string).to_stdout
     end

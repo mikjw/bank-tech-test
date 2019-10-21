@@ -8,6 +8,10 @@ describe Account do
   let (:spy_log) { spy('spy_log') }
   let (:account_3) { Account.new(spy_log) }
 
+  before do
+    account_3.make_deposit(:credit, 250)
+  end
+
   describe 'initialization' do
     it "initializes with a balance of 0" do
       expect(account.balance).to eq(0)
@@ -24,19 +28,19 @@ describe Account do
 
   describe 'updating balance' do
     it "increases balance by 275 for deposit of 275" do
-      account.make_deposit(275)
+      account.make_deposit(:credit, 275)
       expect(account.balance).to eq(275)
     end
 
     it "increases balance by 300 for deposit of 275 and 25" do
-      account.make_deposit(275)
-      account.make_deposit(25)
+      account.make_deposit(:credit, 275)
+      account.make_deposit(:credit, 25)
       expect(account.balance).to eq(300)
     end
 
     it "decreases balance by 200 for withdrawal of 200" do
-      account.make_deposit(275)
-      account.make_withdrawal(200)
+      account.make_deposit(:credit, 275)
+      account.make_withdrawal(:debit, 200)
       expect(account.balance).to eq(75)
     end
   end
@@ -48,19 +52,27 @@ describe Account do
     end
 
     it 'passes deposits to log' do
-      account_3.make_deposit(275)
-      expect(spy_log).to have_received(:store_transaction).with(275)
+      account_3.make_deposit(:credit, 250)
+      expect(spy_log).to have_received(:store_transaction).with(:credit, 250)
+      expect(spy_log).to have_received(:store_transaction).with(:credit, 500)
     end
 
     it 'passes withdrawals to log' do
-      account_3.make_deposit(275)
-      account_3.make_withdrawal(195)
-      expect(spy_log).to have_received(:store_transaction).with(80)
+      account_3.make_withdrawal(:debit, 50)
+      expect(spy_log).to have_received(:store_transaction).with(:credit, 250)
+      expect(spy_log).to have_received(:store_transaction).with(:debit, 200)
     end
 
     it 'passes type credit for a deposit' do
-      account_3.make_deposit(275)
-      expect(spy_log).to have_received(:store_transaction).with(:credit, 275)
+      account_3.make_deposit(:credit, 250)
+      expect(spy_log).to have_received(:store_transaction).with(:credit, 250)
+      expect(spy_log).to have_received(:store_transaction).with(:credit, 500)
+    end
+
+    it 'passes type debit for a withdrawal' do
+      account_3.make_withdrawal(:debit, 100)
+      expect(spy_log).to have_received(:store_transaction).with(:credit, 250)
+      expect(spy_log).to have_received(:store_transaction).with(:debit, 150)
     end
   end 
 end
