@@ -15,6 +15,12 @@ class Account
 
   def print_statement
     puts "balance"
-    puts "#{@balance}.00"
+    puts format_balance(@balance)
+  end
+
+  private 
+
+  def format_balance(balance)
+    "#{@balance}.00"
   end
 end
