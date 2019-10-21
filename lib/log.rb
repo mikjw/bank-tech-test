@@ -6,7 +6,8 @@ class Log
   end
 
   def store_transaction(balance)
-    @transactions << {:balance => format_balance(balance)}
+    @date = Date.new
+    @transactions << {:date => @date, :balance => format_balance(balance)}
   end 
 
   def print_statement
