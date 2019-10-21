@@ -6,6 +6,6 @@ class Log
   end
 
   def store_transaction(balance)
-    @transactions << {:balance => 275}
+    @transactions << {:balance => balance}
   end 
 end 
