@@ -4,6 +4,7 @@ describe Account do
   subject(:account) { described_class.new(test_log) }
 
   let (:test_log) { Log.new }
+  let (:account_2) { Account.new }
 
   describe 'initialization' do
     it "initializes with a balance of 0" do
@@ -15,7 +16,6 @@ describe Account do
     end 
 
     it 'creates a new log if none given' do
-      account_2 = Account.new
       expect(account_2.log).not_to be(nil)
     end
   end
