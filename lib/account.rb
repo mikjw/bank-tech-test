@@ -1,14 +1,13 @@
 class Account
-  attr_reader :balance
+  attr_reader :balance, :log
   
-  def initialize
+  def initialize(log)
+    @log = log
     @balance = 0
-    @transactions = []
   end
 
   def make_deposit(amount)
     @balance += amount
-    @transactions << @balance
   end
 
   def make_withdrawal(amount)
