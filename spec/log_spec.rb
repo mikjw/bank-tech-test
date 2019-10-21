@@ -27,4 +27,11 @@ describe Log do
     output_string = "balance\n275.00\n"
     expect{ log.print_statement }.to output(output_string).to_stdout
   end
+
+  it "prints balance statement after two deposit" do
+    log.store_transaction(275)
+    log.store_transaction(300)
+    output_string = "balance\n300.00\n275.00\n"
+    expect{ log.print_statement }.to output(output_string).to_stdout
+  end
 end

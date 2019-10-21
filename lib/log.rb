@@ -11,7 +11,7 @@ class Log
 
   def print_statement
     puts "balance"
-    @transactions.each do |transaction|
+    @transactions.reverse.each do |transaction|
       puts transaction[:balance]
     end
   end
