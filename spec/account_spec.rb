@@ -25,13 +25,20 @@ describe Account do
   end
 
   it "prints an empty statement with balance" do
-    output_string = "balance\n0.00\n"
+    output_string = "balance\n"
     expect{ account.print_statement }.to output(output_string).to_stdout
   end
 
   it "prints balance statement after one deposit" do
     account.make_deposit(275)
     output_string = "balance\n275.00\n"
+    expect{ account.print_statement }.to output(output_string).to_stdout
+  end
+
+  it "prints balance statement after two deposit" do
+    account.make_deposit(275)
+    account.make_deposit(25)
+    output_string = "balance\n300.00\n275.00\n"
     expect{ account.print_statement }.to output(output_string).to_stdout
   end
 end
