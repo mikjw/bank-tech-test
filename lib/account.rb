@@ -3,7 +3,7 @@ require 'log.rb'
 class Account
   attr_reader :balance
   
-  def initialize
+  def initialize(log = Log.new)
     @balance = 0
     @transactions = []
   end
