@@ -1,7 +1,9 @@
+require 'log.rb'
+
 class Account
   attr_reader :balance, :log
   
-  def initialize(log)
+  def initialize(log = Log.new)
     @log = log
     @balance = 0
   end

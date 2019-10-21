@@ -32,5 +32,10 @@ describe Account do
     it 'initializes with a log' do
       expect(account.log).to eq(test_log)
     end 
+
+    it 'creates a new log if none given' do
+      account_2 = Account.new
+      expect(account_2.log).not_to be(nil)
+    end
   end
 end
