@@ -15,5 +15,6 @@ class Account
 
   def print_statement
     puts "balance"
+    puts "#{@balance}.00"
   end
 end
