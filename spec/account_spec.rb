@@ -17,5 +17,13 @@ describe Account do
     account.make_deposit(25)
     expect(account.balance).to eq(300)
   end
+
+  it "decreases balance by 200 for withdrawal of 200" do
+    account.make_deposit(275)
+    account.make_withdrawal(200)
+    expect(account.balance).to eq(75)
+  end
+
+
 end
 
