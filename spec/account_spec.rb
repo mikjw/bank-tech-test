@@ -5,11 +5,22 @@ describe Account do
 
   let (:test_log) { Log.new }
 
-  describe 'updating balance' do
+  describe 'initialization' do
     it "initializes with a balance of 0" do
       expect(account.balance).to eq(0)
     end
 
+    it 'initializes with a log' do
+      expect(account.log).to eq(test_log)
+    end 
+
+    it 'creates a new log if none given' do
+      account_2 = Account.new
+      expect(account_2.log).not_to be(nil)
+    end
+  end
+
+  describe 'updating balance' do
     it "increases balance by 275 for deposit of 275" do
       account.make_deposit(275)
       expect(account.balance).to eq(275)
@@ -28,21 +39,15 @@ describe Account do
     end
   end
 
-  describe 'displaying statement' do
-    it 'initializes with a log' do
-      expect(account.log).to eq(test_log)
-    end 
-
-    it 'creates a new log if none given' do
-      account_2 = Account.new
-      expect(account_2.log).not_to be(nil)
-    end
-
-    it 'displays statement using log' do
+  describe 'interaction with log' do
+    before (:example) do 
       spy_log = spy('spy_log')
       account_3 = Account.new(spy_log)
-      account_3.display_statement
-      expect(spy_log).to have_received(:print_statement)
+
+      it 'calls log to display statement' do
+        account_3.display_statement
+        expect(spy_log).to have_received(:print_statement)
+      end
     end
-  end
+  end 
 end
