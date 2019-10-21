@@ -21,6 +21,6 @@ class Account
   private 
 
   def format_balance(balance)
-    "#{@balance}.00"
+    "#{balance}.00"
   end
 end
