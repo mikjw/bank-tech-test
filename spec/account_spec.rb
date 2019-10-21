@@ -57,5 +57,10 @@ describe Account do
       account_3.make_withdrawal(195)
       expect(spy_log).to have_received(:store_transaction).with(80)
     end
+
+    it 'passes type credit for a deposit' do
+      account_3.make_deposit(275)
+      expect(spy_log).to have_received(:store_transaction).with(:credit, 275)
+    end
   end 
 end
