@@ -6,6 +6,12 @@ class Log
   end
 
   def store_transaction(balance)
-    @transactions << {:balance => balance}
+    @transactions << {:balance => format_balance(balance)}
   end 
+
+  private 
+
+  def format_balance(balance)
+    "#{balance}.00"
+  end
 end 

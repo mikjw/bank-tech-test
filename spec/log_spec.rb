@@ -9,11 +9,11 @@ describe Log do
 
   it "stores 275 when given 275" do
     log.store_transaction(275)
-    expect(log.transactions).to eq([{:balance => 275}])
+    expect(log.transactions).to eq([{:balance => "275.00"}])
   end
 
   it "stores 300 when given 300" do
     log.store_transaction(300)
-    expect(log.transactions).to eq([{:balance => 300}])
+    expect(log.transactions).to eq([{:balance => "300.00"}])
   end
 end
