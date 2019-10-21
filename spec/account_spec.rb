@@ -11,5 +11,11 @@ describe Account do
     account.make_deposit(275)
     expect(account.balance).to eq(275)
   end
+
+  it "increases balance by 300 for deposit of 275 and 25" do
+    account.make_deposit(275)
+    account.make_deposit(25)
+    expect(account.balance).to eq(300)
+  end
 end
 
