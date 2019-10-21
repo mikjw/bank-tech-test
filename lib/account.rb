@@ -10,6 +10,7 @@ class Account
 
   def make_deposit(amount)
     @balance += amount
+    @log.store_transaction(@balance)
   end
 
   def make_withdrawal(amount)

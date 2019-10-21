@@ -40,14 +40,18 @@ describe Account do
   end
 
   describe 'interaction with log' do
-    before (:example) do 
+    it 'calls log to display statement' do
       spy_log = spy('spy_log')
       account_3 = Account.new(spy_log)
+      account_3.display_statement
+      expect(spy_log).to have_received(:print_statement)
+    end
 
-      it 'calls log to display statement' do
-        account_3.display_statement
-        expect(spy_log).to have_received(:print_statement)
-      end
+    it 'passes deposits to log' do
+      spy_log = spy('spy_log')
+      account_3 = Account.new(spy_log)
+      account_3.make_deposit(275)
+      expect(spy_log).to have_received(:store_transaction).with(275)
     end
   end 
 end
