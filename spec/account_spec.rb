@@ -23,22 +23,4 @@ describe Account do
     account.make_withdrawal(200)
     expect(account.balance).to eq(75)
   end
-
-  it "prints an empty statement with balance" do
-    output_string = "balance\n"
-    expect{ account.print_statement }.to output(output_string).to_stdout
-  end
-
-  it "prints balance statement after one deposit" do
-    account.make_deposit(275)
-    output_string = "balance\n275.00\n"
-    expect{ account.print_statement }.to output(output_string).to_stdout
-  end
-
-  it "prints balance statement after two deposit" do
-    account.make_deposit(275)
-    account.make_deposit(25)
-    output_string = "balance\n300.00\n275.00\n"
-    expect{ account.print_statement }.to output(output_string).to_stdout
-  end
 end
