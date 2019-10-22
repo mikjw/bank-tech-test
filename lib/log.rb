@@ -13,7 +13,7 @@ class Log
   end
 
   def print_statement
-    puts "date || credit || debit || balance"
+    puts 'date || credit || debit || balance'
     @transactions.reverse.each do |transaction|
       if transaction[:type] == :credit
         puts "#{transaction[:date]} || #{transaction[:amount]} || || #{format_number(transaction[:balance])}"

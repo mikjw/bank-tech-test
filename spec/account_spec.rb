@@ -14,7 +14,7 @@ describe Account do
   end
 
   describe 'initialization' do
-    it "initializes with a balance of 0" do
+    it 'initializes with a balance of 0' do
       expect(account.balance).to eq(0)
     end
 
@@ -33,13 +33,13 @@ describe Account do
       expect(account.balance).to eq(275)
     end
 
-    it "increases balance by 300 for deposit of 275 and 25" do
+    it 'increases balance by 300 for deposit of 275 and 25' do
       account.deposit(275)
       account.deposit(25)
       expect(account.balance).to eq(300)
     end
 
-    it "decreases balance by 200 for withdrawal of 200" do
+    it 'decreases balance by 200 for withdrawal of 200' do
       account.deposit(275)
       account.withdraw(200)
       expect(account.balance).to eq(75)
@@ -86,15 +86,15 @@ describe Account do
   describe 'input' do
     it 'raises error if withdrawal exceeds balance' do
       account.deposit(100)
-      expect{ account.withdraw(200) }.to raise_error("Insufficient funds")
+      expect { account.withdraw(200) }.to raise_error("Insufficient funds")
     end
 
     it 'enforces integer input for deposits' do
-      expect{ account.deposit(200.6) }.to raise_error("Error: please enter a whole number")
+      expect { account.deposit(200.6) }.to raise_error("Error: please enter a whole number")
     end
 
     it 'enforces integer input for withdrawals' do
-      expect{ account.withdraw(200.6) }.to raise_error("Error: please enter a whole number")
+      expect { account.withdraw(200.6) }.to raise_error("Error: please enter a whole number")
     end
   end
 end
