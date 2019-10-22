@@ -12,7 +12,7 @@ describe Log do
     it "initializes with empty array of transactions" do
       expect(log.transactions).to eq([])
     end
-  end 
+  end
 
   describe 'storing balances' do
     it "stores 275 when given 275" do
@@ -30,7 +30,19 @@ describe Log do
     it 'adds the date to a transaction' do
       log.store_transaction(:credit, 300)
       expect(log.transactions).to eq([{:date => test_date, :type => :credit, :balance => "300.00"}])
-    end 
+    end
+  end 
+
+  describe 'storing transaction types' do
+    it 'adds type credit to a deposit' do
+      log.store_transaction(:credit, 300)
+      expect(log.transactions).to eq([{:date => test_date, :type => :credit, :balance => "300.00"}])
+    end
+
+    it 'adds type credit to a withdrawal' do
+      log.store_transaction(:debit, 300)
+      expect(log.transactions).to eq([{:date => test_date, :type => :debit, :balance => "300.00"}])
+    end
   end 
 
   describe 'printing statements' do 
