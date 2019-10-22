@@ -81,5 +81,12 @@ describe Account do
       account_3.make_withdrawal(100)
       expect(spy_log).to have_received(:store_transaction).with(:debit, 100, 150)
     end
-  end 
+  end
+
+  describe 'preventing negative balance' do
+    it 'raises error if withdrawal exceeds balance' do
+      account.make_deposit(100)
+      expect{ account.make_withdrawal(200) }.to raise_error("Insufficient funds")
+    end
+  end
 end

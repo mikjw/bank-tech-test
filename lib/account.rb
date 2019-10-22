@@ -14,6 +14,7 @@ class Account
   end
 
   def make_withdrawal(amount)
+    fail "Insufficient funds" unless amount <= @balance
     @balance -= amount
     @log.store_transaction(:debit, amount, @balance)
   end

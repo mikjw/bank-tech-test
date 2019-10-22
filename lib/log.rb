@@ -23,7 +23,7 @@ class Log
     end
   end
 
-  private 
+  private
 
   def format_balance(balance)
     "#{balance}.00"
