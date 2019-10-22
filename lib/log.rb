@@ -26,7 +26,7 @@ class Log
   private
 
   def format_number(number)
-    "#{number}.00"
+    format('%.2f', number)
   end
 
   def format_date(date)
