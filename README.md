@@ -30,6 +30,21 @@ date || credit || debit || balance
 ```
 
 
+### My approach
+
+* Reviewing the spec, I first considered a single `Account` class with `deposit`, `withdraw` and `print_statement` methods.
+* I also considered that a printing or transaction-logging class may be extrated as the program developed. 
+* I began test driving the `Account` class to add the basic functions and store a balance in memory
+* When the printer method started to take more than one parameter (initally only `balance`), I extracted a `Log` class which could store transaction details in an array of hashes.
+* I added a validation enforcing integer-only user inputs because floats would risk inaccuracy as the program aged.  
+* Statement values are formatted to 2dp by the Log class. 
+* Decimal inputs could be allowed in future by converting them to integers at the 'penny' level. 
+* I also added a guard clause to `withdraw` to defend against negative balances.
+* Refactored with Rubocop.
+
+#### Reflections
+* I considerd whether it was necessary for every transaction to record its type - credit or debit - as this could feasibly be inferred from the amounts. I reasoned that explicit transaction types would significantly add to program readability, and would allow sorting to be implemented easily if required in future.
+* Currently, each user command returns their transactions hash to the terminal - a privacy concern that could be avoided by returning a confirmation message instead. 
 
 ## Specification
 
@@ -52,18 +67,3 @@ date || credit || debit || balance
 14/01/2012 || || 500.00 || 2500.00
 13/01/2012 || 2000.00 || || 3000.00
 10/01/2012 || 1000.00 || || 1000.00
-
-### My approach
-
-* Reviewing the spec, I first considered a single `Account` class with `deposit`, `withdraw` and `print_statement` methods.
-* I also considered that a printing or transaction-logging class may be extrated as the program developed. 
-* I began test driving the `Account` class to add the basic functions and store a balance in memory
-* When the printer method started to take more than one parameter (initally only `balance`), I extracted a `Log` class which could store transaction details in an array of hashes.
-* I added a validation enforcing integer-only user inputs because floats would risk inaccuracy as the program aged.  
-* Statement values are formatted to 2dp by the Log class. 
-* Decimal inputs could be allowed in future by converting them to integers at the 'penny' level. 
-* I also added a guard clause to `withdraw` to defend against negative balances.
-
-#### Reflections
-* I considerd whether it was necessary for every transaction to record its type - credit or debit - as this could feasibly be inferred from the amounts. I reasoned that explicit transaction types would significantly add to program readability, and would allow sorting to be implemented easily if required in future.
-* Currently, each user command returns their transactions hash to the terminal - a privacy concern that could be avoided by returning a confirmation message instead. 
