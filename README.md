@@ -9,7 +9,7 @@
 
 ### To run
 
-* Run `irb` (or equivalent) in the command line
+* Run `irb` (or equivalent) in the command line, then:
 ```
 2.6.3 :001 > require './lib/account.rb'
  => true 
@@ -42,7 +42,7 @@ date || credit || debit || balance
 * I added a guard clause to `withdraw` to defend against negative balances. An overdraft feature could be added if required. 
 * Refactored with Rubocop.
 
-* The TDD process let to a series of tests showing how the program developed. The process also led to duplication which was factored out once complete; the full series of tests can be seen by browsing the files at [this](https://github.com/mikjw/bank-tech-test/commit/caa7090bacdaa75c1f32069f6934a10e6e13df90) commit.
+* The TDD process let to a series of tests showing the development process. It also led to duplication once complete; the full series of tests can be seen by browsing the files at [this](https://github.com/mikjw/bank-tech-test/commit/caa7090bacdaa75c1f32069f6934a10e6e13df90) commit from before refactoring.
 
 #### Improvements
 * Currently, every user command returns their transactions hash to the terminal - a privacy concern that could be avoided by returning a confirmation message instead. 
