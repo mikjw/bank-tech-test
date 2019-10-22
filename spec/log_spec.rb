@@ -19,11 +19,6 @@ describe Log do
       log.store_transaction(:credit, 275, 275)
       expect(log.transactions).to eq([{ :date => '21/10/2019', :type => :credit, :amount => 275, :balance => 275 }])
     end
-
-    it 'stores 300 when given 300' do
-      log.store_transaction(:credit, 300, 300)
-      expect(log.transactions).to eq([{ :date => '21/10/2019', :type => :credit, :amount => 300, :balance => 300 }])
-    end
   end
 
   describe 'storing dates' do

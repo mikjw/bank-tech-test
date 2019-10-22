@@ -36,15 +36,15 @@ date || credit || debit || balance
 * I also considered that a printing or transaction-logging class may be extrated as the program developed. 
 * I began test driving the `Account` class to add the basic functions and store a balance in memory
 * When the printer method started to take more than one parameter (initally only `balance`), I extracted a `Log` class which could store transaction details in an array of hashes.
-* I added a validation enforcing integer-only user inputs because floats would risk inaccuracy as the program aged.  
-* Statement values are formatted to 2dp by the Log class. 
+* I added a validation enforcing integer-only user inputs because floats would risk inaccuracy as the program aged, with statement values formatted to 2dp (to meet spec) by the Log class. 
 * Decimal inputs could be allowed in future by converting them to integers at the 'penny' level. 
-* I also added a guard clause to `withdraw` to defend against negative balances.
+* I added a guard clause to `withdraw` to defend against negative balances. An overdraft feature could be added if required. 
 * Refactored with Rubocop.
 
+* The TDD process let to a series of tests showing the development process. The process also led to duplication once complete; the full series of tests can be seen by browsing the files at [this](https://github.com/mikjw/bank-tech-test/commit/caa7090bacdaa75c1f32069f6934a10e6e13df90) commit from before refactoring.
+
 #### Reflections
-* I considerd whether it was necessary for every transaction to record its type - credit or debit - as this could feasibly be inferred from the amounts. I reasoned that explicit transaction types would significantly add to program readability, and would allow sorting to be implemented easily if required in future.
-* Currently, each user command returns their transactions hash to the terminal - a privacy concern that could be avoided by returning a confirmation message instead. 
+* Currently, every user command returns their transactions hash to the terminal - a privacy concern that could be avoided by returning a confirmation message instead. 
 
 ## Specification
 

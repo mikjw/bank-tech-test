@@ -28,11 +28,6 @@ describe Account do
   end
 
   describe 'updating balance' do
-    it "increases balance by 275 for deposit of 275" do
-      account.deposit(275)
-      expect(account.balance).to eq(275)
-    end
-
     it 'increases balance by 300 for deposit of 275 and 25' do
       account.deposit(275)
       account.deposit(25)
