@@ -63,5 +63,12 @@ describe Log do
       output_string = "date || credit || debit || balance\n#{test_date} || 25 || || 300.00\n#{test_date} || 275 || || 275.00\n"
       expect{ log.print_statement }.to output(output_string).to_stdout
     end
+
+    it "prints balance statement after a deposit and a withdrawal" do
+      log.store_transaction(:credit, 275, 275)
+      log.store_transaction(:debit, 25, 250)
+      output_string = "date || credit || debit || balance\n#{test_date} || || 25 || 250.00\n#{test_date} || 275 || || 275.00\n"
+      expect{ log.print_statement }.to output(output_string).to_stdout
+    end
   end
 end

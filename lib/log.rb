@@ -13,7 +13,11 @@ class Log
   def print_statement
     puts "date || credit || debit || balance"
     @transactions.reverse.each do |transaction|
-      puts "#{transaction[:date]} || #{transaction[:amount]} || || #{transaction[:balance]}"
+      if transaction[:type] == :credit
+        puts "#{transaction[:date]} || #{transaction[:amount]} || || #{transaction[:balance]}"
+      elsif transaction[:type] == :debit
+        puts "#{transaction[:date]} || || #{transaction[:amount]} || #{transaction[:balance]}"
+      end 
     end
   end
 
