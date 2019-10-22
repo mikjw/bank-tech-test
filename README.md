@@ -1,5 +1,6 @@
 # Bank tech test
 
+[![Build Status](https://travis-ci.com/mikjw/bank-tech-test.svg?branch=master)](https://travis-ci.com/mikjw/bank-tech-test)
 ### Installation
 
 * Clone this repo and navigate to route 
@@ -8,7 +9,6 @@
 * Run `irb` (or equivalent) in the command line
 
 ### To run
-
 ```
 2.6.3 :001 > require './lib/account.rb'
  => true 
