@@ -5,9 +5,9 @@ class Log
     @transactions = []
   end
 
-  def store_transaction(type, balance)
+  def store_transaction(type, amount, balance)
     @date = Date.new
-    @transactions << {:date => @date, :type => type, :balance => format_balance(balance)}
+    @transactions << {:date => @date, :type => type, :amount => amount, :balance => format_balance(balance)}
   end 
 
   def print_statement

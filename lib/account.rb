@@ -8,18 +8,17 @@ class Account
     @balance = 0
   end
 
-  def make_deposit(type, amount)
+  def make_deposit(amount)
     @balance += amount
-    @log.store_transaction(:credit, @balance)
+    @log.store_transaction(:credit, amount, @balance)
   end
 
-  def make_withdrawal(type, amount)
+  def make_withdrawal(amount)
     @balance -= amount
-    @log.store_transaction(:debit, @balance)
+    @log.store_transaction(:debit, amount, @balance)
   end
 
   def display_statement
     @log.print_statement
   end
-
 end
