@@ -70,12 +70,5 @@ describe Log do
       output_string = "date || credit || debit || balance\n21/10/2019 || || 25 || 250.00\n21/10/2019 || 275 || || 275.00\n"
       expect{ log.print_statement }.to output(output_string).to_stdout
     end
-  
-    it "handles floats correctly" do
-      log.store_transaction(:credit, 275.68, 275.68)
-      log.store_transaction(:debit, 25.34, 250.34)
-      output_string = "date || credit || debit || balance\n21/10/2019 || || 25.34 || 250.34\n21/10/2019 || 275.68 || || 275.68\n"
-      expect{ log.print_statement }.to output(output_string).to_stdout
-    end
   end
 end

@@ -88,5 +88,13 @@ describe Account do
       account.deposit(100)
       expect{ account.withdraw(200) }.to raise_error("Insufficient funds")
     end
+
+    it 'enforces integer input for deposits' do
+      expect{ account.deposit(200.6) }.to raise_error("Error: please enter a whole number")
+    end
+
+    it 'enforces integer input for withdrawals' do
+      expect{ account.withdraw(200.6) }.to raise_error("Error: please enter a whole number")
+    end
   end
 end
