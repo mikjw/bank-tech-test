@@ -9,7 +9,7 @@ class Log
 
   def store_transaction(type, amount, balance)
     @date = format_date(Date.today)
-    @transactions << {:date => @date, :type => type, :amount => amount, :balance => format_balance(balance)}
+    @transactions << {:date => @date, :type => type, :amount => amount, :balance => format_number(balance)}
   end
 
   def print_statement
@@ -25,8 +25,8 @@ class Log
 
   private
 
-  def format_balance(balance)
-    "#{balance}.00"
+  def format_number(number)
+    "#{number}.00"
   end
 
   def format_date(date)
