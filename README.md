@@ -1,12 +1,35 @@
 # Bank tech test
 
-Today, you'll practice doing a tech test.
+### Installation
 
-For most tech tests, you'll essentially have unlimited time.  This practice session is about producing the best code you can when there is a minimal time pressure.
+* Clone this repo and navigate to route 
+* Run `bundle install` to install dependencies
+* Run `rspec` and check the tests are passing
+* Run `irb` (or equivalent) in the command line
 
-You'll get to practice your OO design and TDD skills.
+### To run
 
-You'll work alone, and you'll also review your own code so you can practice reflecting on and improving your own work.
+```
+2.6.3 :001 > require './lib/account.rb'
+ => true 
+2.6.3 :002 > a = Account.new
+ => #<Account:0x00007ff44c83efa8 @log=#<Log:0x00007ff44c83ef80 @transactions=[]>, @balance=0> 
+2.6.3 :003 > a.deposit(250)
+ => [{:date=>"22/10/2019", :type=>:credit, :amount=>250, :balance=>250}] 
+2.6.3 :004 > a.deposit(1000)
+ => [{:date=>"22/10/2019", :type=>:credit, :amount=>250, :balance=>250}, {:date=>"22/10/2019", :type=>:credit, :amount=>1000, :balance=>1250}] 
+2.6.3 :005 > a.withdraw(350)
+ => [{:date=>"22/10/2019", :type=>:credit, :amount=>250, :balance=>250}, {:date=>"22/10/2019", :type=>:credit, :amount=>1000, :balance=>1250}, {:date=>"22/10/2019", :type=>:debit, :amount=>350, :balance=>900}] 
+2.6.3 :006 > a.display_statement
+date || credit || debit || balance
+22/10/2019 || || 350 || 900.00
+22/10/2019 || 1000 || || 1250.00
+22/10/2019 || 250 || || 250.00
+ => [{:date=>"22/10/2019", :type=>:debit, :amount=>350, :balance=>900}, {:date=>"22/10/2019", :type=>:credit, :amount=>1000, :balance=>1250}, {:date=>"22/10/2019", :type=>:credit, :amount=>250, :balance=>250}] 
+2.6.3 :007 > 
+```
+
+
 
 ## Specification
 
@@ -25,9 +48,20 @@ You'll work alone, and you'll also review your own code so you can practice refl
 **When** she prints her bank statement  
 **Then** she would see
 
-```
 date || credit || debit || balance
 14/01/2012 || || 500.00 || 2500.00
 13/01/2012 || 2000.00 || || 3000.00
 10/01/2012 || 1000.00 || || 1000.00
-```
+
+### My approach
+
+* Reviewing the spec, I first considered a single `Account`class with `deposit`, `withdraw` and `print_statement` methods.
+* I also considered that a printing or transaction-logging class may be extrated as the program developed. 
+* I began test driving the `Account` class 
+* It seemed appropriate to extract a Log class when the printer method started to take more than one parameter (initially taking only `balance`). The Log class could store each transaction in an array of hashes.
+* I added a validation enforcing integer-only user inputs because floats would risk inaccuracy as the program aged.  
+* Statement values are formatted to 2dp by the Log class. 
+* Decimal inputs could be allowed in future by converting them to integers at the 'penny' level. 
+
+#### Reflections
+* I considerd whether it was necessary for every transaction to record its type - credit or debit - as this could feasibly be inferred from the amounts. I reasoned that explicit transaction types would significantly add to program readability, and would allow sorting to be implemented easily if required in future.
