@@ -1,3 +1,5 @@
+require 'date'
+
 class Log
   attr_reader :transactions
 
@@ -6,9 +8,9 @@ class Log
   end
 
   def store_transaction(type, amount, balance)
-    @date = Date.new
+    @date = format_date(Date.today)
     @transactions << {:date => @date, :type => type, :amount => amount, :balance => format_balance(balance)}
-  end 
+  end
 
   def print_statement
     puts "date || credit || debit || balance"
@@ -17,7 +19,7 @@ class Log
         puts "#{transaction[:date]} || #{transaction[:amount]} || || #{transaction[:balance]}"
       elsif transaction[:type] == :debit
         puts "#{transaction[:date]} || || #{transaction[:amount]} || #{transaction[:balance]}"
-      end 
+      end
     end
   end
 
@@ -26,4 +28,8 @@ class Log
   def format_balance(balance)
     "#{balance}.00"
   end
-end 
+
+  def format_date(date)
+    "#{date.day}/#{date.month}/#{date.year}"
+  end
+end
