@@ -8,10 +8,6 @@ describe Account do
   let (:spy_log) { spy('spy_log') }
   let (:account_3) { Account.new(spy_log) }
 
-  before do
-    account_3.make_deposit(:credit, 250)
-  end
-
   describe 'initialization' do
     it "initializes with a balance of 0" do
       expect(account.balance).to eq(0)
@@ -54,25 +50,21 @@ describe Account do
     it 'passes deposits to log' do
       account_3.make_deposit(:credit, 250)
       expect(spy_log).to have_received(:store_transaction).with(:credit, 250)
-      expect(spy_log).to have_received(:store_transaction).with(:credit, 500)
     end
 
     it 'passes withdrawals to log' do
       account_3.make_withdrawal(:debit, 50)
-      expect(spy_log).to have_received(:store_transaction).with(:credit, 250)
-      expect(spy_log).to have_received(:store_transaction).with(:debit, 200)
+      expect(spy_log).to have_received(:store_transaction).with(:debit, -50)
     end
 
     it 'passes type credit for a deposit' do
       account_3.make_deposit(:credit, 250)
       expect(spy_log).to have_received(:store_transaction).with(:credit, 250)
-      expect(spy_log).to have_received(:store_transaction).with(:credit, 500)
     end
 
     it 'passes type debit for a withdrawal' do
       account_3.make_withdrawal(:debit, 100)
-      expect(spy_log).to have_received(:store_transaction).with(:credit, 250)
-      expect(spy_log).to have_received(:store_transaction).with(:debit, 150)
+      expect(spy_log).to have_received(:store_transaction).with(:debit, -100)
     end
   end 
 end
