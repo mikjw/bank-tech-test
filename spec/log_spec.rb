@@ -17,31 +17,31 @@ describe Log do
   describe 'storing balances' do
     it "stores 275 when given 275" do
       log.store_transaction(:credit, 275, 275)
-      expect(log.transactions).to eq([{:date => '21/10/2019', :type => :credit, :amount => 275, :balance => "275.00"}])
+      expect(log.transactions).to eq([{:date => '21/10/2019', :type => :credit, :amount => 275, :balance => 275}])
     end
 
     it "stores 300 when given 300" do
       log.store_transaction(:credit, 300, 300)
-      expect(log.transactions).to eq([{:date => '21/10/2019', :type => :credit, :amount => 300, :balance => "300.00"}])
+      expect(log.transactions).to eq([{:date => '21/10/2019', :type => :credit, :amount => 300, :balance => 300}])
     end
   end
 
   describe 'storing dates' do
     it 'adds the date to a transaction' do
       log.store_transaction(:credit, 300, 300)
-      expect(log.transactions).to eq([{:date => '21/10/2019', :type => :credit, :amount => 300, :balance => "300.00"}])
+      expect(log.transactions).to eq([{:date => '21/10/2019', :type => :credit, :amount => 300, :balance => 300}])
     end
   end
 
   describe 'storing transaction types' do
     it 'adds type credit to a deposit' do
       log.store_transaction(:credit, 300, 300)
-      expect(log.transactions).to eq([{:date => '21/10/2019', :type => :credit, :amount => 300, :balance => "300.00"}])
+      expect(log.transactions).to eq([{:date => '21/10/2019', :type => :credit, :amount => 300, :balance => 300}])
     end
 
     it 'adds type debit to a withdrawal' do
       log.store_transaction(:debit, 300, 300)
-      expect(log.transactions).to eq([{:date => '21/10/2019', :type => :debit, :amount => 300, :balance => "300.00"}])
+      expect(log.transactions).to eq([{:date => '21/10/2019', :type => :debit, :amount => 300, :balance => 300}])
     end
   end 
 
