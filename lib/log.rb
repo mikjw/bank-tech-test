@@ -11,9 +11,9 @@ class Log
   end 
 
   def print_statement
-    puts "balance"
+    puts "date || credit || debit || balance"
     @transactions.reverse.each do |transaction|
-      puts transaction[:balance]
+      puts "#{transaction[:date]} || #{transaction[:amount]} || || #{transaction[:balance]}"
     end
   end
 
