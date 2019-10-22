@@ -6,9 +6,10 @@
 * Clone this repo and navigate to route 
 * Run `bundle install` to install dependencies
 * Run `rspec` and check the tests are passing
-* Run `irb` (or equivalent) in the command line
 
 ### To run
+
+* Run `irb` (or equivalent) in the command line
 ```
 2.6.3 :001 > require './lib/account.rb'
  => true 
@@ -33,17 +34,17 @@ date || credit || debit || balance
 ### My approach
 
 * Reviewing the spec, I first considered a single `Account` class with `deposit`, `withdraw` and `print_statement` methods.
-* I also considered that a printing or transaction-logging class may be extrated as the program developed. 
-* I began test driving the `Account` class to add the basic functions and store a balance in memory
+* I also considered that a printing or transaction-logging class may be extracted as the program developed. 
+* I began test driving the `Account` class to add the basic functions and store a balance in memory.
 * When the printer method started to take more than one parameter (initally only `balance`), I extracted a `Log` class which could store transaction details in an array of hashes.
 * I added a validation enforcing integer-only user inputs because floats would risk inaccuracy as the program aged, with statement values formatted to 2dp (to meet spec) by the Log class. 
 * Decimal inputs could be allowed in future by converting them to integers at the 'penny' level. 
 * I added a guard clause to `withdraw` to defend against negative balances. An overdraft feature could be added if required. 
 * Refactored with Rubocop.
 
-* The TDD process let to a series of tests showing the development process. The process also led to duplication once complete; the full series of tests can be seen by browsing the files at [this](https://github.com/mikjw/bank-tech-test/commit/caa7090bacdaa75c1f32069f6934a10e6e13df90) commit from before refactoring.
+* The TDD process let to a series of tests showing how the program developed. The process also led to duplication which was factored out once complete; the full series of tests can be seen by browsing the files at [this](https://github.com/mikjw/bank-tech-test/commit/caa7090bacdaa75c1f32069f6934a10e6e13df90) commit.
 
-#### Reflections
+#### Improvements
 * Currently, every user command returns their transactions hash to the terminal - a privacy concern that could be avoided by returning a confirmation message instead. 
 
 ## Specification
